@@ -110,6 +110,7 @@ def multi_rps_rounds():
         print('You lose overall')
 
 if __name__ == '__main__':
+    #rps_round()
     multi_rps_rounds()
 
 
