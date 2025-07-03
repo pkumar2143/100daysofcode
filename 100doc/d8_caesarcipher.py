@@ -19,10 +19,20 @@ def encrypt(original_text, shift_amount):
             empty_list[i] = alphabet_list[empty_list[i]]
     # Join & return list elements
     final_message = ''.join(empty_list)
-    print(final_message)
+    print(f"Encoded text = {final_message}")
     return final_message
+
+def decrypt(encrypted_text, shift_amount):
+    deciphered_text = ""
+    for letter in encrypted_text:
+        de_shifted_position = (alphabet_list.index(letter) - shift_amount) % len(alphabet_list)
+        deciphered_text += alphabet_list[de_shifted_position]
+    print(f"Decoded text = {deciphered_text}")
+    return deciphered_text
 
 if direction == 'e': 
     encrypt(text, shift)
+elif direction == 'd':
+    decrypt(text, shift)
 
 
