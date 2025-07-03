@@ -1,38 +1,36 @@
-alphabet_list = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
 
-direction = input("Type 'e' to encrypt, type 'd' to decrypt:\n").lower()
-text      = input("Type your message:\n").lower()
-shift     = int(input("Type the shift number:\n"))
-
-def encrypt(original_text, shift_amount):
-    # Create an empty list the size of the "original text"
-    empty_list = [0]*len(original_text)
-    
-    # Find the indices of each of the letter and replace in the respective empty list elements
-    # Add 'shift_amount' to each index
-    # Replace the shifted indices by their respective alphabet letter
-    for i in range(len(original_text)):
-        if original_text[i] == " ":
-            empty_list[i] = " "
+def caesar(original_text, shift_amount, en_or_decrypt):
+        # Direction of shift (depends on whether encrypting or decrypting)
+        if en_or_decrypt == "e":
+            factor = 1
+        elif en_or_decrypt == "d":
+            factor = -1
         else:
-            empty_list[i] = (alphabet_list.index(original_text[i]) + shift_amount) % len(alphabet_list)
-            empty_list[i] = alphabet_list[empty_list[i]]
-    # Join & return list elements
-    final_message = ''.join(empty_list)
-    print(f"Encoded text = {final_message}")
-    return final_message
+            factor = 0
+            print("Invalid entry for 'encrypt' or 'decrypt'. Returning original text.")
+        
+        final_text = ""
+        for letter in original_text:
+            if letter not in alphabet:
+                final_text += letter
+            else:
+                shifted_position = (alphabet.index(letter) + shift_amount*factor) % len(alphabet)
+                final_text += alphabet[shifted_position]
+        print(f"Final text = {final_text}")
+        return final_text
 
-def decrypt(encrypted_text, shift_amount):
-    deciphered_text = ""
-    for letter in encrypted_text:
-        de_shifted_position = (alphabet_list.index(letter) - shift_amount) % len(alphabet_list)
-        deciphered_text += alphabet_list[de_shifted_position]
-    print(f"Decoded text = {deciphered_text}")
-    return deciphered_text
+restart_program = 'y'
 
-if direction == 'e': 
-    encrypt(text, shift)
-elif direction == 'd':
-    decrypt(text, shift)
+while restart_program == 'y':
+    direction = input("Type 'e' to encrypt, type 'd' to decrypt:\n").lower()
+    text      = input("Type your message:\n").lower()
+    shift     = int(input("Type the shift number:\n"))
 
+    caesar(original_text=text, shift_amount=shift, en_or_decrypt=direction)
+    
+    restart_program = input("Type y/[n] if you want to go again:".lower())
+    
+    if restart_program == 'n' or restart_program == '':
+        print("Thanks for using the Caesar cipher! Goodbye!")
 
