@@ -15,7 +15,7 @@ def caesar(original_text, shift_amount, en_or_decrypt):
             if letter not in alphabet:
                 final_text += letter
             else:
-                shifted_position = (alphabet.index(letter) + shift_amount*factor) % len(alphabet)
+                shifted_position = (alphabet.index(letter) + shift_amount * factor) % len(alphabet)
                 final_text += alphabet[shifted_position]
         print(f"Final text = {final_text}")
         return final_text

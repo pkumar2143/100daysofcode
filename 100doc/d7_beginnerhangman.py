@@ -77,15 +77,19 @@ chosen_word = rand.choice(word_list) # Randomly choose a word
 guessed_word_array = ["-"]*len(chosen_word) # create a list to keep track of guesses
 print("The selected word,", " ".join(guessed_word_array), " has ", len(chosen_word), " letters.")
 
+user_guesses = []
+
 valid_characters = "abcdefghijklmnopqrstuvwxyz"
 lives_left = 6
 while lives_left > 0:
     print(" ")
-    guessed_letter = input("Guess a letter: ").lower()  # Ask user to guess a letter. Always of type str
+    guessed_letter = str(input("Guess a letter: ")).lower()  # Ask user to guess a letter. Always of type str
 
     # Make sure letter has not been guessed and that user entry is valid
-    if (guessed_letter in guessed_word_array) or (guessed_letter not in valid_characters):
+    if (guessed_letter in guessed_word_array) or (guessed_letter not in valid_characters) or (guessed_letter in user_guesses):
         print("You either already guessed the letter or it is invalid. You lose a life!")
+        if (guessed_letter in user_guesses):
+            print("CAUTION: You guessed this character already!")
         lives_left -= 1
         display_word_and_livesleft(guessed_word_array, lives_left)
         if lives_left == 0:
@@ -102,6 +106,10 @@ while lives_left > 0:
     else:
         print("Wrong!")
         lives_left -= 1
+
+    
+    # Need to fix so that if the user selects the same letter AGAIN it warns them but removes a life.
+    user_guesses.append(guessed_letter)
 
 
     display_word_and_livesleft(guessed_word_array, lives_left)
