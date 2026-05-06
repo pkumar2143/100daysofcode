@@ -1,0 +1,12 @@
+100 Days of Code
+Day 010
+
+# Functions with outputs
+def format_name(first_name, last_name):
+	return f"{first_name.title()} {last_name.title()}"
+	
+# Output of one function can be passed to another
+
+# Multiple returns
+
+# Docstrings: mini documentation
