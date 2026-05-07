@@ -1,0 +1,24 @@
+# Scope
+
+enemies = 1                # Global
+
+def increase_enemies():
+	enemies = 2            # Local
+	print(enemies)
+	
+increase_enemies()
+print(enemies) # Results in 2
+
+# There is no such thing as block scope in Python
+
+# To modify something in global scope (WHICH IS A BAD IDEA)
+# You need to specify "global" before the variable name within the local scope
+
+enemy = 0
+
+def create_enemy():
+    global enemy
+    enemy += 1
+    
+    
+

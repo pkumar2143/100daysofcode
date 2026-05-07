@@ -10,3 +10,14 @@ def format_name(first_name, last_name):
 # Multiple returns
 
 # Docstrings: mini documentation
+def some_func():
+	'''
+	Documentation for some_func
+	'''
+	
+We can "re-"reference functions
+
+def func_a(input):
+	pass
+	
+my_fave_func = func_a
