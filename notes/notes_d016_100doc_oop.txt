@@ -1,0 +1,39 @@
+# OOP
+
+# Self driving car example
+# Camera module
+# road sensor
+# map/navigation module
+# energy conservation
+
+# Teams dedicated to working on each module
+
+# Also good for reusability... suppose we were working on a drone system next year.
+
+# Modeling real-world objects.
+
+Restaurant example, instead of running each task (waiting, cooking, cleaning, etc) by yourself, you hire folks, 
+and each has their own attributes and actions (methods)
+
+Waiter
+	+ Has: holding_plate, tables_responsible
+	+ Does: take_order, take_payment
+
+We could have multiple waiters (objects) based on the same blueprint (class)
+
+waiter = WaiterBlueprint()
+  ^               ^
+  |				  |
+  object        class
+
+waiter.holding_plate  #attribute
+waiter.take_payment() #method
+
+Turtle graphics
+
+Using packages, PyPI
+
+PrettyTable package.
+
+
+
